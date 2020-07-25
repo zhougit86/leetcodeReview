@@ -1,0 +1,43 @@
+The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
+
+Now consider if some obstacles are added to the grids. How many unique paths would there be?
+
+An obstacle and empty space is marked as 1 and 0 respectively in the grid.
+
+Input:
+[
+  [0,0,0],
+  [0,1,0],
+  [0,0,0]
+]
+Output: 2
+Explanation:
+There is one obstacle in the middle of the 3x3 grid above.
+There are two ways to reach the bottom-right corner:
+1. Right -> Right -> Down -> Down
+2. Down -> Down -> Right -> Right
+
+感觉dp的特征就是先建一个n*n的数组，然后用一个时间复杂度是n方的算法把答案算出来
+
+==================================================
+class Solution {
+public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+    int n = obstacleGrid.length, m = n > 0 ? obstacleGrid[0].length : 0;
+    int[][] dp = new int[n][m];
+	/* initialize the base case for the first row. */
+    for (int i = 0; i < n && obstacleGrid[i][0] == 0; i ++) {
+        dp[i][0] = 1;
+    }
+	/* initialiize the base case for the first column */
+    for (int j = 0; j < m && obstacleGrid[0][j] ==  0; j ++) {
+         dp[0][j] = 1;
+    }
+	/* Compute the answer iteratively. */
+    for (int i = 1; i < n; i ++) {
+      for (int j = 1; j < m; j ++) {
+	    dp[i][j] = obstacleGrid[i][j] == 0 ? dp[i - 1][j] + dp [i][j - 1] : 0;
+      }
+    }
+    return dp[n - 1][m - 1];
+  }
+}
