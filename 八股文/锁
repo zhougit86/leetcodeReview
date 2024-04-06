@@ -1,0 +1,9 @@
+锁就涉及到CAS
+
+1。乐观锁 悲观锁
+2。独占锁 共享锁（ReentrantReadWriteLock）
+3。互斥锁 读写锁（ReentrantReadWriteLock）
+4。公平锁 非公平（synchronized 非公平， reentrantLock是默认非公平的，可以通过参数让他公平）
+5。可重入 对于Java ReentrantLock而言, 他的名字就可以看出是一个可重入锁。对于Synchronized而言，也是一个可重入锁。
+6。自旋锁的目的是为了避免反复唤醒线程，适合于一些轻量的场景，例如atomicInteger等等
+7。锁升级 偏向锁 -》 自旋锁 -》 互斥锁

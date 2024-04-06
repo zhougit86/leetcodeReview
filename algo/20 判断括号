@@ -1,0 +1,13 @@
+(){}[]
+
+
+** Deque<Character>
+
+实际就是一个stack的操作
+peek 就是最末尾
+pop弹出
+push推入
+isEmpty
+
+
+.charAt

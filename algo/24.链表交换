@@ -1,0 +1,10 @@
+1 2 3 4
+改成
+2 1 4 3
+
+
+
+
+newNode = head.next
+head.next = swap(newNode.next)
+newHead.next = head;

@@ -13,9 +13,9 @@ From the top-left corner, there are a total of 3 ways to reach the bottom-right 
 3. Down -> Right -> Right
 
 
-ÆäÊµ¾ÍÊÇ×î¼òµ¥µÄ¶¯Ì¬¹æ»®
+ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½òµ¥µÄ¶ï¿½Ì¬ï¿½æ»®
 
-Õâ¸ö×ö·¨±È½ÏÂý£¬±È½ÏºÏÀíµÄÊÇÁíÍâÓÃÒ»¸öm*nµÄ¾ØÕó°Ñ¶«Î÷±£´æÆðÀ´
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È½Ïºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½m*nï¿½Ä¾ï¿½ï¿½ï¿½Ñ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 public int uniquePaths(int m, int n) {
         System.out.printf("input: %d,%d\n ",m,n);
@@ -30,3 +30,27 @@ public int uniquePaths(int m, int n) {
         }
         return uniquePaths(m-1,n) + uniquePaths(m,n-1);
     }
+
+
+class Solution {
+    public int uniquePaths(int m, int n) {
+        int[][] f = new int[m][n];
+        for (int i = 0; i < m; ++i) {
+            f[i][0] = 1;
+        }
+        for (int j = 0; j < n; ++j) {
+            f[0][j] = 1;
+        }
+        for (int i = 1; i < m; ++i) {
+            for (int j = 1; j < n; ++j) {
+                f[i][j] = f[i - 1][j] + f[i][j - 1];
+            }
+        }
+        return f[m - 1][n - 1];
+    }
+}
+
+ä½œè€…ï¼šåŠ›æ‰£å®˜æ–¹é¢˜è§£
+é“¾æŽ¥ï¼šhttps://leetcode.cn/problems/unique-paths/solutions/514311/bu-tong-lu-jing-by-leetcode-solution-hzjf/
+æ¥æºï¼šåŠ›æ‰£ï¼ˆLeetCodeï¼‰
+è‘—ä½œæƒå½’ä½œè€…æ‰€æœ‰ã€‚å•†ä¸šè½¬è½½è¯·è”ç³»ä½œè€…èŽ·å¾—æŽˆæƒï¼Œéžå•†ä¸šè½¬è½½è¯·æ³¨æ˜Žå‡ºå¤„ã€‚

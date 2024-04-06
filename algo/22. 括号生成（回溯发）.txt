@@ -1,0 +1,29 @@
+** 回溯法
+
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> ans = new ArrayList<String>();
+        backtrack(ans, new StringBuilder(), 0, 0, n);
+        return ans;
+    }
+
+    public void backtrack(List<String> ans, StringBuilder cur, int open, int close, int max) {
+        if (cur.length() == max * 2) {
+            ans.add(cur.toString());
+            return;
+        }
+        if (open < max) {
+            cur.append('(');
+            backtrack(ans, cur, open + 1, close, max);
+            cur.deleteCharAt(cur.length() - 1);
+        }
+        if (close < open) {
+            cur.append(')');
+            backtrack(ans, cur, open, close + 1, max);
+            cur.deleteCharAt(cur.length() - 1);
+        }
+    }
+}
+
+
+https://github.com/CoderLeixiaoshuai/java-eight-part/blob/master/docs/java/juc/%E9%9D%A2%E8%AF%95%E5%BF%85%E9%97%AE%E7%9A%84CAS%E5%8E%9F%E7%90%86%E4%BD%A0%E4%BC%9A%E4%BA%86%E5%90%97.md
